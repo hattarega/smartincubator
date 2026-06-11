@@ -1,0 +1,254 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Background */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    padding: 40px;
+    border-radius: 20px;
+    width: 350px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Title */
+.card h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Input */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    outline: none;
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #2563eb;
+}
+
+/* Link */
+.link {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.link a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+
+/* Checkbox */
+.remember {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* Error */
+.error {
+    color: #f87171;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+body {
+            background: #f5f6fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card-custom {
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .toggle {
+            width: 45px;
+            height: 24px;
+            background: #ddd;
+            border-radius: 50px;
+            position: relative;
+            cursor: pointer;
+            margin: auto;
+        }
+
+        .toggle::after {
+            content: '';
+            width: 18px;
+            height: 18px;
+            background: white;
+            position: absolute;
+            top: 3px;
+            left: 4px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .toggle.active {
+            background: #4e73df;
+        }
+
+        .toggle.active::after {
+            left: 23px;
+        }
+
+        /* Mobile spacing */
+        @media (max-width: 768px) {
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .edit-btn-modern {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+            border: none;
+
+            background: rgba(255, 255, 255, 0.6);
+            /* glass look */
+            backdrop-filter: blur(10px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #555;
+            font-size: 16px;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+        }
+
+        /* hover effect modern */
+        .edit-btn-modern:hover {
+            background: #4e73df;
+            color: white;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 18px rgba(78, 115, 223, 0.3);
+        }
+
+        /* klik effect */
+        .edit-btn-modern:active {
+            transform: scale(0.95);
+        }
+
+        /* Card */
+        .card-custom {
+            border-radius: 12px;
+            border: 1px solid #f1f1f1;
+        }
+
+        /* Status */
+        .status-on {
+            color: #22c55e;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-off {
+            color: #ef4444;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Toggle kecil */
+        .switch-mini {
+            position: relative;
+            width: 34px;
+            height: 18px;
+        }
+
+        .switch-mini input {
+            display: none;
+        }
+
+        .slider-mini {
+            position: absolute;
+            background: #e5e7eb;
+            border-radius: 20px;
+            inset: 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .slider-mini:before {
+            content: "";
+            position: absolute;
+            height: 14px;
+            width: 14px;
+            left: 2px;
+            top: 2px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .switch-mini input:checked+.slider-mini {
+            background: #22c55e;
+        }
+
+        .switch-mini input:checked+.slider-mini:before {
+            transform: translateX(16px);
+        }
+
+        /* AUTO icon */
+        .auto-icon {
+            font-size: 14px;
+            color: #9ca3af;
+            transition: 0.2s;
+        }
+
+        /* 🔥 ini yang bikin "nyala" */
+        .auto-icon.active {
+            color: #3b82f6;
+        }
+
+        /* Hover */
+        .auto-icon:hover {
+            transform: rotate(90deg);
+        }
