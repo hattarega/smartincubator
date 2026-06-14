@@ -107,24 +107,51 @@ class MqttService
         // ================= ACTUATOR =================
         $mqtt->subscribe('cage/1/actuator/state', function ($topic, $message) use ($cageId) {
 
+            Log::info('MQTT ACTUATOR MASUK', [
+                'topic'   => $topic,
+                'message' => $message
+            ]);
+
             $data = json_decode($message, true);
-            if (!$data) return;
-
-            $actuator = \App\Models\Actuator::where('cage_id', $cageId)
-                ->whereRaw('LOWER(name) = ?', [strtolower($data['name'])])
-                ->first();
-
-            if ($actuator && $actuator->mode === 'AUTO') {
-                $actuator->update([
-                    'state' => strtoupper($data['state']),
-                    'updated_at' => now()
-                ]);
+            if (!$data) {
+                Log::error('MQTT ACTUATOR GAGAL JSON');
+                return;
             }
 
-            try {
-                event(new ActuatorUpdated($actuator));
-            } catch (\Throwable $e) {
-                Log::error('EVENT ERROR: ' . $e->getMessage());
+            // Loop tiap aktuator yang ada di payload (lampu, mistmaker, dst)
+            foreach ($data as $name => $info) {
+                if (!isset($info['state'], $info['mode'])) {
+                    Log::warning('MQTT ACTUATOR: field state/mode tidak lengkap', ['name' => $name]);
+                    continue;
+                }
+
+                $actuator = \App\Models\Actuator::where('cage_id', $cageId)
+                    ->whereRaw('LOWER(name) = ?', [strtolower($name)])
+                    ->first();
+
+                if (!$actuator) {
+                    Log::warning('MQTT ACTUATOR: tidak ditemukan di DB', ['name' => $name]);
+                    continue;
+                }
+
+                // Update state dan mode sesuai yang dikirim ESP
+                $actuator->update([
+                    'state'      => strtoupper($info['state']),
+                    'mode'       => strtoupper($info['mode']),
+                    'updated_at' => now()
+                ]);
+
+                Log::info('MQTT ACTUATOR UPDATED', [
+                    'name'  => $name,
+                    'state' => $info['state'],
+                    'mode'  => $info['mode'],
+                ]);
+
+                try {
+                    event(new ActuatorUpdated($actuator));
+                } catch (\Throwable $e) {
+                    Log::error('EVENT ERROR: ' . $e->getMessage());
+                }
             }
         }, 0);
 
