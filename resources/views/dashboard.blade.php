@@ -220,17 +220,8 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: .5;
-                transform: scale(.8);
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(.8); }
         }
 
         /* Theme toggle */
@@ -278,15 +269,10 @@
             border-color: rgba(255, 107, 107, 0.5);
         }
 
-        .logout-btn i {
-            font-size: 14px;
-        }
+        .logout-btn i { font-size: 14px; }
 
         @media (max-width: 480px) {
-            .logout-btn span {
-                display: none;
-            }
-
+            .logout-btn span { display: none; }
             .logout-btn {
                 width: 34px;
                 height: 34px;
@@ -409,20 +395,13 @@
         .sensor-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 2px;
             border-radius: 18px 18px 0 0;
         }
 
-        .sensor-card.temp::before {
-            background: linear-gradient(90deg, var(--temp), transparent);
-        }
-
-        .sensor-card.hum::before {
-            background: linear-gradient(90deg, var(--hum), transparent);
-        }
+        .sensor-card.temp::before { background: linear-gradient(90deg, var(--temp), transparent); }
+        .sensor-card.hum::before  { background: linear-gradient(90deg, var(--hum),  transparent); }
 
         .sensor-header-row {
             display: flex;
@@ -441,27 +420,12 @@
             font-size: 17px;
         }
 
-        .sensor-icon-wrap.temp {
-            background: var(--temp-dim);
-            color: var(--temp);
-        }
+        .sensor-icon-wrap.temp { background: var(--temp-dim); color: var(--temp); }
+        .sensor-icon-wrap.hum  { background: var(--hum-dim);  color: var(--hum);  }
 
-        .sensor-icon-wrap.hum {
-            background: var(--hum-dim);
-            color: var(--hum);
-        }
+        .sensor-title { font-size: 13px; font-weight: 600; color: var(--text-muted); }
 
-        .sensor-title {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-muted);
-        }
-
-        .sensor-readings {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
+        .sensor-readings { display: flex; gap: 8px; margin-bottom: 12px; }
 
         .sensor-reading-block {
             flex: 1;
@@ -487,13 +451,8 @@
             font-family: var(--font-mono);
         }
 
-        .sensor-reading-value.temp {
-            color: var(--temp);
-        }
-
-        .sensor-reading-value.hum {
-            color: var(--hum);
-        }
+        .sensor-reading-value.temp { color: var(--temp); }
+        .sensor-reading-value.hum  { color: var(--hum);  }
 
         .sensor-limit {
             display: flex;
@@ -530,9 +489,7 @@
         .actuator-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 2px;
             border-radius: 18px 18px 0 0;
             background: linear-gradient(90deg, transparent, var(--amber), transparent);
@@ -540,9 +497,7 @@
             transition: opacity .3s;
         }
 
-        .actuator-card.active::before {
-            opacity: 1;
-        }
+        .actuator-card.active::before { opacity: 1; }
 
         .actuator-icon-bg {
             width: 52px;
@@ -565,17 +520,9 @@
             box-shadow: 0 0 18px rgba(245, 158, 11, .15);
         }
 
-        .actuator-name {
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
+        .actuator-name { font-size: 13px; font-weight: 600; margin-bottom: 12px; }
 
-        .toggle-wrap {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+        .toggle-wrap { display: flex; align-items: center; gap: 10px; }
 
         .toggle-switch {
             width: 44px;
@@ -596,8 +543,7 @@
             height: 18px;
             background: var(--text-dim);
             border-radius: 50%;
-            top: 2px;
-            left: 2px;
+            top: 2px; left: 2px;
             transition: all .3s;
         }
 
@@ -619,20 +565,13 @@
             letter-spacing: .05em;
         }
 
-        .toggle-status.on {
-            color: var(--amber);
-        }
-
-        .toggle-status.off {
-            color: var(--text-dim);
-        }
+        .toggle-status.on  { color: var(--amber); }
+        .toggle-status.off { color: var(--text-dim); }
 
         .auto-btn {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 26px;
-            height: 26px;
+            top: 12px; right: 12px;
+            width: 26px; height: 26px;
             border: 1px solid var(--border);
             border-radius: 8px;
             background: var(--bg-elevated);
@@ -645,10 +584,7 @@
             transition: all .2s;
         }
 
-        .auto-btn:hover {
-            border-color: var(--hum);
-            color: var(--hum);
-        }
+        .auto-btn:hover { border-color: var(--hum); color: var(--hum); }
 
         .auto-btn.auto-active {
             background: rgba(96, 165, 250, .1);
@@ -676,9 +612,61 @@
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 10px;
-
-            padding-right: 150px;
+            padding-right: 200px; /* lebih lebar untuk tampung 2 tombol */
         }
+
+        /* ===== CHART CONTROLS (tanggal + export) ===== */
+        .chart-controls {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .date-input {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 7px 12px;
+            font-size: 12px;
+            color: var(--text);
+            font-family: var(--font);
+            outline: none;
+            transition: all .2s;
+        }
+
+        .date-input:focus { border-color: var(--amber); }
+
+        /* ===== EXPORT BUTTON ===== */
+        .export-excel-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 7px 13px;
+            background: rgba(52, 211, 153, 0.1);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            border-radius: 10px;
+            color: var(--success);
+            font-size: 12px;
+            font-weight: 600;
+            font-family: var(--font);
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all .2s;
+            flex-shrink: 0;
+        }
+
+        .export-excel-btn:hover {
+            background: rgba(52, 211, 153, 0.2);
+            border-color: rgba(52, 211, 153, 0.45);
+            color: var(--success);
+        }
+
+        .export-excel-btn i { font-size: 14px; }
 
         /* Clickable legend chips */
         .legend-chips {
@@ -703,57 +691,11 @@
             transition: all .2s;
         }
 
-        .legend-chip.active {
-            color: var(--text);
-            border-color: var(--border-light);
-        }
+        .legend-chip.active   { color: var(--text); border-color: var(--border-light); }
+        .legend-chip.inactive { opacity: .38; }
+        .legend-chip:hover    { border-color: var(--border-light); }
 
-        .legend-chip.inactive {
-            opacity: .38;
-        }
-
-        .legend-chip:hover {
-            border-color: var(--border-light);
-        }
-
-        .legend-chip-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .legend-chip-dash {
-            width: 16px;
-            height: 2px;
-            flex-shrink: 0;
-            background: repeating-linear-gradient(90deg, currentColor 0, currentColor 4px, transparent 4px, transparent 8px);
-        }
-
-        .date-input {
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 2;
-
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-
-            border-radius: 10px;
-            padding: 7px 12px;
-
-            font-size: 12px;
-            color: var(--text);
-
-            font-family: var(--font);
-            outline: none;
-
-            transition: all .2s;
-        }
-
-        .date-input:focus {
-            border-color: var(--amber);
-        }
+        .legend-chip-dot  { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
         /* ===== MODALS ===== */
         .modal-content {
@@ -764,28 +706,13 @@
             transition: background .25s;
         }
 
-        .modal-header {
-            border-bottom: 1px solid var(--border);
-            padding: 18px 22px 14px;
-        }
+        .modal-header { border-bottom: 1px solid var(--border); padding: 18px 22px 14px; }
+        .modal-title  { font-weight: 700; font-size: 15px; }
 
-        .modal-title {
-            font-weight: 700;
-            font-size: 15px;
-        }
+        .btn-close { filter: var(--close-filter); opacity: .5; }
+        .btn-close:hover { opacity: 1; }
 
-        .btn-close {
-            filter: var(--close-filter);
-            opacity: .5;
-        }
-
-        .btn-close:hover {
-            opacity: 1;
-        }
-
-        .modal-body {
-            padding: 18px 22px;
-        }
+        .modal-body { padding: 18px 22px; }
 
         .modal-body label {
             font-size: 11px;
@@ -804,11 +731,7 @@
             margin-top: 6px;
         }
 
-        .modal-footer {
-            border-top: 1px solid var(--border);
-            padding: 14px 22px;
-            gap: 8px;
-        }
+        .modal-footer { border-top: 1px solid var(--border); padding: 14px 22px; gap: 8px; }
 
         .form-control {
             background: var(--bg-card);
@@ -848,10 +771,7 @@
             padding: 8px 16px;
         }
 
-        .btn-primary:hover {
-            background: var(--amber-light);
-            color: #0D0F14;
-        }
+        .btn-primary:hover { background: var(--amber-light); color: #0D0F14; }
 
         /* floating alert */
         .floating-alert {
@@ -872,69 +792,39 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .sensor-row {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .info-row {
-                grid-template-columns: 1fr 1fr;
-            }
+            .sensor-row { grid-template-columns: repeat(2, 1fr); }
+            .info-row   { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 640px) {
-            .app-wrapper {
-                padding: 10px 12px;
-            }
+            .app-wrapper { padding: 10px 12px; }
+            .top-nav { flex-direction: column; align-items: flex-start; }
+            .nav-right { width: 100%; }
+            .datetime-badge { flex: 1; min-width: 0; }
 
-            /* Nav wraps: brand on top row, nav-right fills below */
-            .top-nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            .chart-title { padding-right: 0; font-size: 13px; }
 
-            .nav-right {
+            /* chart controls: tanggal di atas, export di bawah */
+            .chart-controls {
+                position: static;
+                margin-bottom: 10px;
                 width: 100%;
             }
 
-            /* datetime stretches to fill available space */
-            .datetime-badge {
-                flex: 1;
-                min-width: 0;
-            }
+            .date-input { flex: 1; font-size: 11px; padding: 6px 8px; }
+
+            .export-label { display: none; }
+            .export-excel-btn { padding: 7px 10px; }
         }
 
         @media (max-width: 480px) {
-            .sensor-row {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .info-row {
-                grid-template-columns: 1fr 1fr;
-            }
+            .sensor-row { grid-template-columns: 1fr 1fr; }
+            .info-row   { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 360px) {
-            .sensor-row {
-                grid-template-columns: 1fr;
-            }
-
-            .info-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width:640px) {
-
-            .chart-title {
-                padding-right: 120px;
-                font-size: 13px;
-            }
-
-            .date-input {
-                width: 110px;
-                font-size: 11px;
-                padding: 6px 8px;
-            }
+            .sensor-row { grid-template-columns: 1fr; }
+            .info-row   { grid-template-columns: 1fr; }
         }
     </style>
 
@@ -953,60 +843,32 @@
 
 <script>
     window.addEventListener('pageshow', function(event) {
-        if (event.persisted) {
-            window.location.reload();
-        }
+        if (event.persisted) { window.location.reload(); }
     });
 </script>
 
-
-{{-- <script>
-    window.history.forward();
-
-    function noBack() {
-        window.history.forward();
-    }
-
-    window.onload = noBack;
-    window.onpageshow = function(evt) {
-        if (evt.persisted) noBack();
-    };
-
-    window.onunload = function() {};
-</script> --}}
-
-<!-- Backend functions — unchanged -->
+<!-- Backend functions -->
 <script>
     function toggleActuator(id) {
         fetch('/actuator/toggle', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({
-                id
-            })
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            body: JSON.stringify({ id })
         }).then(r => r.json()).then(d => console.log('toggle', d));
     }
 
     function setAuto(id) {
         fetch('/actuator/auto', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({
-                id
-            })
+            headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
+            body: JSON.stringify({ id })
         }).then(r => r.json()).then(d => console.log('auto', d));
     }
 </script>
 
 <script>
     const MAX_TEMP = {{ optional($cage->setting)->max_temperature ?? 37.5 }};
-    const MIN_HUM = {{ optional($cage->setting)->min_humidity ?? 60 }};
+    const MIN_HUM  = {{ optional($cage->setting)->min_humidity ?? 60 }};
 </script>
 
 <script>
@@ -1015,9 +877,9 @@
         /* =========================================
            THEME TOGGLE
         ========================================= */
-        var html = document.documentElement;
+        var html     = document.documentElement;
         var themeBtn = document.getElementById('theme-toggle-btn');
-        var themeIcon = document.getElementById('theme-icon');
+        var themeIcon= document.getElementById('theme-icon');
 
         function applyTheme(t) {
             html.setAttribute('data-theme', t);
@@ -1026,98 +888,54 @@
             if (window._chart) buildChart(window._rawData || []);
         }
 
-        // Set icon to match saved theme on load
         applyTheme(html.getAttribute('data-theme'));
-
         themeBtn.addEventListener('click', function() {
             applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
         });
 
-
         /* =========================================
-           REALTIME CLOCK — always visible
+           REALTIME CLOCK
         ========================================= */
         function updateDateTime() {
             var el = document.getElementById('datetime');
             if (!el) return;
-            var now = new Date();
-            var date = now.toLocaleDateString('id-ID', {
-                weekday: 'short',
-                day: '2-digit',
-                month: 'short',
-                year: 'numeric'
-            });
-            var time = now.toLocaleTimeString('id-ID', {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            });
+            var now  = new Date();
+            var date = now.toLocaleDateString('id-ID', { weekday:'short', day:'2-digit', month:'short', year:'numeric' });
+            var time = now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
             el.innerText = date + '  ' + time;
         }
         updateDateTime();
         setInterval(updateDateTime, 1000);
 
+        /* =========================================
+           ROTATION SCHEDULE
+        ========================================= */
         function updateRotationSchedule() {
+            var now         = new Date();
+            var schedules   = [0, 4, 8, 12, 16, 20];
+            var currentHour = now.getHours();
+            var currentMin  = now.getMinutes();
+            var completed   = 0;
+            var nextHour    = null;
 
-            const now = new Date();
-
-            // Jadwal perputaran tiap 4 jam
-            const schedules = [0, 4, 8, 12, 16, 20];
-
-            let completed = 0;
-            let nextHour = null;
-
-            const currentHour = now.getHours();
-            const currentMinute = now.getMinutes();
-
-            // Hitung jumlah putaran yang sudah lewat
-            schedules.forEach(hour => {
-
-                if (
-                    currentHour > hour ||
-                    (currentHour === hour && currentMinute >= 0)
-                ) {
-                    completed++;
-                }
-
+            schedules.forEach(function(hour) {
+                if (currentHour > hour || (currentHour === hour && currentMin >= 0)) completed++;
             });
 
-            // Cari jadwal berikutnya
-            for (let i = 0; i < schedules.length; i++) {
-
-                if (currentHour < schedules[i]) {
-                    nextHour = schedules[i];
-                    break;
-                }
-
+            for (var i = 0; i < schedules.length; i++) {
+                if (currentHour < schedules[i]) { nextHour = schedules[i]; break; }
             }
+            if (nextHour === null) nextHour = 0;
 
-            // Jika sudah lewat jam 20:00
-            if (nextHour === null) {
-                nextHour = 0;
-            }
-
-            // Format jam berikutnya
-            const nextText =
-                String(nextHour).padStart(2, '0') + ':00';
-
-            // Update tampilan
+            var nextText = String(nextHour).padStart(2, '0') + ':00';
             document.getElementById('rotation-count').innerText = completed;
-
-
             document.getElementById('rotation-info').innerHTML =
                 'Sudah berputar <strong>' + completed + '/6</strong> kali<br>' +
                 'Jadwal berikutnya pukul <strong>' + nextText + '</strong>';
-
         }
 
-        // jalankan pertama kali
         updateRotationSchedule();
-
-        // update tiap 1 menit
         setInterval(updateRotationSchedule, 60000);
-
-
 
         /* =========================================
            ALERT AUTO HIDE
@@ -1126,28 +944,23 @@
             var a = document.getElementById('floatingAlert');
             if (a) {
                 a.style.transition = 'opacity .5s';
-                a.style.opacity = '0';
-                setTimeout(function() {
-                    a.remove();
-                }, 500);
+                a.style.opacity    = '0';
+                setTimeout(function() { a.remove(); }, 500);
             }
         }, 2500);
-
 
         /* =========================================
            ECHO — REALTIME
         ========================================= */
         if (typeof Echo !== 'undefined') {
             Echo.channel('sensor.{{ $latest->cage_id ?? 1 }}')
-                .subscribed(function() {
-                    console.log('✅ SENSOR CONNECTED');
-                })
+                .subscribed(function() { console.log('✅ SENSOR CONNECTED'); })
                 .listen('.sensor.updated', function(e) {
                     var map = {
                         'dht11-temp': e.data.temperature_dht11 + '°',
-                        'dht11-hum': e.data.humidity_dht11 + '%',
+                        'dht11-hum':  e.data.humidity_dht11    + '%',
                         'dht22-temp': e.data.temperature_dht22 + '°',
-                        'dht22-hum': e.data.humidity_dht22 + '%',
+                        'dht22-hum':  e.data.humidity_dht22    + '%',
                     };
                     Object.keys(map).forEach(function(id) {
                         var el = document.getElementById(id);
@@ -1156,23 +969,18 @@
                 });
 
             Echo.channel('actuator.{{ $cage->id }}')
-                .subscribed(function() {
-                    console.log('✅ ACTUATOR CONNECTED');
-                })
+                .subscribed(function() { console.log('✅ ACTUATOR CONNECTED'); })
                 .listen('.actuator.updated', function(e) {
-                    var a = e.actuator;
-                    var isOn = a.state === 'ON';
-                    var toggle = document.getElementById('toggle-' + a.id);
-                    var card = document.getElementById('act-card-' + a.id);
-                    var status = document.getElementById('status-' + a.id);
-                    var autoBtn = document.getElementById('auto-btn-' + a.id);
-                    var autoIco = document.getElementById('auto-icon-' + a.id);
-                    if (toggle) toggle.classList.toggle('on', isOn);
-                    if (card) card.classList.toggle('active', isOn);
-                    if (status) {
-                        status.innerText = a.state;
-                        status.className = 'toggle-status ' + (isOn ? 'on' : 'off');
-                    }
+                    var a      = e.actuator;
+                    var isOn   = a.state === 'ON';
+                    var toggle = document.getElementById('toggle-'   + a.id);
+                    var card   = document.getElementById('act-card-' + a.id);
+                    var status = document.getElementById('status-'   + a.id);
+                    var autoBtn= document.getElementById('auto-btn-' + a.id);
+                    var autoIco= document.getElementById('auto-icon-'+ a.id);
+                    if (toggle)  toggle.classList.toggle('on', isOn);
+                    if (card)    card.classList.toggle('active', isOn);
+                    if (status)  { status.innerText = a.state; status.className = 'toggle-status ' + (isOn ? 'on' : 'off'); }
                     if (autoBtn) autoBtn.classList.toggle('auto-active', a.mode === 'AUTO');
                     if (autoIco) autoIco.style.color = a.mode === 'AUTO' ? 'var(--hum)' : 'var(--text-dim)';
                 });
@@ -1180,97 +988,49 @@
             console.error('❌ Echo belum dimuat');
         }
 
-
         /* =========================================
            CHART
         ========================================= */
-        window._chart = null;
+        window._chart   = null;
         window._rawData = [];
-
-        // Per-dataset visibility state
         var visible = [true, true, true, true];
 
-        var META = [{
-                label: 'DHT11 Suhu',
-                color: '#FF6B6B',
-                dash: false,
-                axis: 'y'
-            },
-            {
-                label: 'DHT22 Suhu',
-                color: '#FCA5A5',
-                dash: true,
-                axis: 'y'
-            },
-            {
-                label: 'DHT11 Kelembapan',
-                color: '#60A5FA',
-                dash: false,
-                axis: 'y1'
-            },
-            {
-                label: 'DHT22 Kelembapan',
-                color: '#93C5FD',
-                dash: true,
-                axis: 'y1'
-            },
+        var META = [
+            { label:'DHT11 Suhu',        color:'#FF6B6B', dash:false, axis:'y'  },
+            { label:'DHT22 Suhu',        color:'#FCA5A5', dash:true,  axis:'y'  },
+            { label:'DHT11 Kelembapan',  color:'#60A5FA', dash:false, axis:'y1' },
+            { label:'DHT22 Kelembapan',  color:'#93C5FD', dash:true,  axis:'y1' },
         ];
 
         function hexRgba(hex, a) {
-            var r = parseInt(hex.slice(1, 3), 16),
-                g = parseInt(hex.slice(3, 5), 16),
-                b = parseInt(hex.slice(5, 7), 16);
-            return 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+            var r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+            return 'rgba('+r+','+g+','+b+','+a+')';
         }
 
         function parseData(raw) {
             var filtered = raw.filter(function(item) {
                 var d = new Date(item.created_at);
-                //return d.getMinutes() === 0 || d.getMinutes() === 30;
-                //return d.getMinutes() % 10 === 0;
-
-                // tampil tiap 30 menit
-                var regularPoint =
-                    d.getMinutes() === 0 ||
-                    d.getMinutes() === 30;
-
-                // tampil jika melewati batas setting
-                var abnormal =
-                    item.temperature > MAX_TEMP ||
-                    item.humidity < MIN_HUM;
-
+                var regularPoint = d.getMinutes() === 0 || d.getMinutes() === 30;
+                var abnormal = item.temperature > MAX_TEMP || item.humidity < MIN_HUM;
                 return regularPoint || abnormal;
             });
             var grouped = {};
             filtered.forEach(function(item) {
-                var d = new Date(item.created_at);
-                var key = d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString()
-                    .padStart(2, '0');
-                if (!grouped[key]) grouped[key] = {
-                    dht11: {},
-                    dht22: {}
-                };
+                var d   = new Date(item.created_at);
+                var key = d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+                if (!grouped[key]) grouped[key] = { dht11:{}, dht22:{} };
                 if (item.type === 'dht11') grouped[key].dht11 = item;
                 else grouped[key].dht22 = item;
             });
-            var labels = [],
-                rows = [
-                    [],
-                    [],
-                    [],
-                    []
-                ];
+            var labels = [], rows = [[],[],[],[]];
             Object.keys(grouped).forEach(function(t) {
                 labels.push(t);
                 rows[0].push(grouped[t].dht11.temperature ?? null);
                 rows[1].push(grouped[t].dht22.temperature ?? null);
-                rows[2].push(grouped[t].dht11.humidity ?? null);
-                rows[3].push(grouped[t].dht22.humidity ?? null);
+                rows[2].push(grouped[t].dht11.humidity    ?? null);
+                rows[3].push(grouped[t].dht22.humidity    ?? null);
             });
-            return {
-                labels: labels,
-                rows: rows
-            };
+            return { labels:labels, rows:rows };
         }
 
         function getCSSVar(name) {
@@ -1281,101 +1041,58 @@
             var parsed = parseData(raw);
             var canvas = document.getElementById('sensorChart');
             if (!canvas) return;
-            if (window._chart) {
-                window._chart.destroy();
-                window._chart = null;
-            }
+            if (window._chart) { window._chart.destroy(); window._chart = null; }
 
             var datasets = META.map(function(m, i) {
                 return {
-                    label: m.label,
-                    data: parsed.rows[i],
-                    borderColor: m.color,
-                    backgroundColor: hexRgba(m.color, 0.08),
-                    borderWidth: 2,
-                    borderDash: m.dash ? [5, 4] : [],
-                    pointRadius: 3,
+                    label:            m.label,
+                    data:             parsed.rows[i],
+                    borderColor:      m.color,
+                    backgroundColor:  hexRgba(m.color, 0.08),
+                    borderWidth:      2,
+                    borderDash:       m.dash ? [5,4] : [],
+                    pointRadius:      3,
                     pointBackgroundColor: m.color,
-                    tension: 0.4,
-                    fill: !m.dash,
-                    yAxisID: m.axis,
-                    hidden: !visible[i],
+                    tension:          0.4,
+                    fill:             !m.dash,
+                    yAxisID:          m.axis,
+                    hidden:           !visible[i],
                 };
             });
 
             window._chart = new Chart(canvas, {
                 type: 'line',
-                data: {
-                    labels: parsed.labels,
-                    datasets: datasets
-                },
+                data: { labels: parsed.labels, datasets: datasets },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false
-                    },
+                    interaction: { mode:'index', intersect:false },
                     plugins: {
-                        legend: {
-                            display: false
-                        },
+                        legend: { display: false },
                         tooltip: {
                             backgroundColor: getCSSVar('--chart-tooltip-bg'),
-                            borderColor: getCSSVar('--chart-tooltip-border'),
-                            borderWidth: 1,
-                            titleColor: getCSSVar('--chart-tooltip-title'),
-                            bodyColor: getCSSVar('--chart-tooltip-body'),
-                            padding: 12,
-                            cornerRadius: 10,
+                            borderColor:     getCSSVar('--chart-tooltip-border'),
+                            borderWidth:     1,
+                            titleColor:      getCSSVar('--chart-tooltip-title'),
+                            bodyColor:       getCSSVar('--chart-tooltip-body'),
+                            padding:         12,
+                            cornerRadius:    10,
                         }
                     },
                     scales: {
                         x: {
-                            grid: {
-                                color: getCSSVar('--chart-grid'),
-                                drawBorder: false
-                            },
-                            ticks: {
-                                color: getCSSVar('--chart-tick'),
-                                font: {
-                                    family: "'Space Mono',monospace",
-                                    size: 10
-                                }
-                            }
+                            grid:  { color: getCSSVar('--chart-grid'), drawBorder:false },
+                            ticks: { color: getCSSVar('--chart-tick'), font:{ family:"'Space Mono',monospace", size:10 } }
                         },
                         y: {
                             position: 'left',
-                            grid: {
-                                color: getCSSVar('--chart-grid'),
-                                drawBorder: false
-                            },
-                            ticks: {
-                                color: '#FF6B6B',
-                                font: {
-                                    family: "'Space Mono',monospace",
-                                    size: 10
-                                },
-                                callback: function(v) {
-                                    return v + '°C';
-                                }
-                            }
+                            grid:  { color: getCSSVar('--chart-grid'), drawBorder:false },
+                            ticks: { color:'#FF6B6B', font:{ family:"'Space Mono',monospace", size:10 }, callback: function(v){ return v+'°C'; } }
                         },
                         y1: {
                             position: 'right',
-                            grid: {
-                                drawOnChartArea: false
-                            },
-                            ticks: {
-                                color: '#60A5FA',
-                                font: {
-                                    family: "'Space Mono',monospace",
-                                    size: 10
-                                },
-                                callback: function(v) {
-                                    return v + '%';
-                                }
-                            }
+                            grid:  { drawOnChartArea:false },
+                            ticks: { color:'#60A5FA', font:{ family:"'Space Mono',monospace", size:10 }, callback: function(v){ return v+'%'; } }
                         }
                     }
                 }
@@ -1384,9 +1101,7 @@
 
         function loadChart(date) {
             fetch('/chart-data?date=' + (date || ''))
-                .then(function(r) {
-                    return r.json();
-                })
+                .then(function(r) { return r.json(); })
                 .then(function(data) {
                     window._rawData = data;
                     buildChart(data);
@@ -1394,7 +1109,7 @@
                 });
         }
 
-        /* Legend chip clicks — toggle dataset */
+        /* Legend chip clicks */
         document.querySelectorAll('.legend-chip').forEach(function(chip) {
             chip.addEventListener('click', function() {
                 var idx = parseInt(chip.dataset.idx);
@@ -1410,7 +1125,7 @@
         function syncChips() {
             document.querySelectorAll('.legend-chip').forEach(function(chip) {
                 var idx = parseInt(chip.dataset.idx);
-                chip.classList.toggle('active', visible[idx]);
+                chip.classList.toggle('active',   visible[idx]);
                 chip.classList.toggle('inactive', !visible[idx]);
             });
         }
@@ -1418,10 +1133,25 @@
         loadChart();
         syncChips();
 
-        var filterEl = document.getElementById('filter-date');
-        if (filterEl) filterEl.addEventListener('change', function() {
-            loadChart(this.value);
-        });
+        /* =========================================
+           DATE FILTER + UPDATE EXPORT URL
+        ========================================= */
+        var filterEl   = document.getElementById('filter-date');
+        var exportBtn  = document.getElementById('export-btn');
+        var exportBase = '{{ route("riwayat.export") }}';
+
+        function updateExportUrl(date) {
+            if (exportBtn) {
+                exportBtn.href = date ? exportBase + '?date=' + date : exportBase;
+            }
+        }
+
+        if (filterEl) {
+            filterEl.addEventListener('change', function() {
+                loadChart(this.value);
+                updateExportUrl(this.value);
+            });
+        }
 
     });
 </script>
@@ -1446,16 +1176,10 @@
             </div>
 
             <div class="nav-right">
-                <!-- Jam — SELALU tampil (tidak hidden di mobile) -->
                 <div class="datetime-badge">
                     <i class="bi bi-clock"></i>
                     <span id="datetime">—</span>
                 </div>
-
-                {{-- <div class="status-pill">
-                <div class="pulse-dot"></div>
-                Live
-            </div> --}}
 
                 <button class="theme-toggle" id="theme-toggle-btn" title="Ganti tema">
                     <i class="bi bi-sun-fill" id="theme-icon"></i>
@@ -1486,13 +1210,9 @@
                 @if ($cage)
                     <div class="info-card-value">{{ floor($day) }}</div>
                     <div class="info-card-sub">Dibuat pada
-                        <strong>
-                            {{ \Carbon\Carbon::parse($cage->start_date)->translatedFormat('d/m/Y') }}
-                        </strong>
+                        <strong>{{ \Carbon\Carbon::parse($cage->start_date)->translatedFormat('d/m/Y') }}</strong>
                         pukul
-                        <strong>
-                            {{ \Carbon\Carbon::parse($cage->start_date)->translatedFormat('H:i') }}
-                        </strong>
+                        <strong>{{ \Carbon\Carbon::parse($cage->start_date)->translatedFormat('H:i') }}</strong>
                     </div>
                 @else
                     <div class="info-card-value" style="color:var(--text-dim)">—</div>
@@ -1514,14 +1234,8 @@
 
             <div class="info-card" id="rotation-card">
                 <div class="info-card-label">Perputaran Motor</div>
-
-                <!-- jumlah putaran hari ini -->
                 <div class="info-card-value" id="rotation-count">0</div>
-
-                <!-- info jadwal -->
-                <div class="info-card-sub" id="rotation-info">
-                    Menunggu jadwal...
-                </div>
+                <div class="info-card-sub" id="rotation-info">Menunggu jadwal...</div>
             </div>
 
         </div>
@@ -1544,20 +1258,16 @@
                 <div class="sensor-readings">
                     <div class="sensor-reading-block">
                         <div class="sensor-reading-label">DHT11</div>
-                        <div class="sensor-reading-value temp" id="dht11-temp">{{ $latest->temperature_dht11 ?? '—' }}°
-                        </div>
+                        <div class="sensor-reading-value temp" id="dht11-temp">{{ $latest->temperature_dht11 ?? '—' }}°</div>
                     </div>
                     <div class="sensor-reading-block">
                         <div class="sensor-reading-label">DHT22</div>
-                        <div class="sensor-reading-value temp" id="dht22-temp">{{ $latest->temperature_dht22 ?? '—' }}°
-                        </div>
+                        <div class="sensor-reading-value temp" id="dht22-temp">{{ $latest->temperature_dht22 ?? '—' }}°</div>
                     </div>
                 </div>
                 <div class="sensor-limit">
                     <i class="bi bi-arrow-up-circle" style="color:var(--temp)"></i>
-                    Maks <strong
-                        style="color:var(--text);margin-left:4px">{{ optional($cage->setting)->max_temperature ?? '—' }}
-                        °C</strong>
+                    Maks <strong style="color:var(--text);margin-left:4px">{{ optional($cage->setting)->max_temperature ?? '—' }} °C</strong>
                 </div>
             </div>
 
@@ -1568,28 +1278,23 @@
                         <div class="sensor-icon-wrap hum"><i class="bi bi-droplet-half"></i></div>
                         <span class="sensor-title">Kelembapan</span>
                     </div>
-                    <a class="edit-btn" data-bs-toggle="modal" data-bs-target="#modalKelembapan"
-                        style="position:static">
+                    <a class="edit-btn" data-bs-toggle="modal" data-bs-target="#modalKelembapan" style="position:static">
                         <i class="bi bi-pencil"></i>
                     </a>
                 </div>
                 <div class="sensor-readings">
                     <div class="sensor-reading-block">
                         <div class="sensor-reading-label">DHT11</div>
-                        <div class="sensor-reading-value hum" id="dht11-hum">{{ $latest->humidity_dht11 ?? '—' }}%
-                        </div>
+                        <div class="sensor-reading-value hum" id="dht11-hum">{{ $latest->humidity_dht11 ?? '—' }}%</div>
                     </div>
                     <div class="sensor-reading-block">
                         <div class="sensor-reading-label">DHT22</div>
-                        <div class="sensor-reading-value hum" id="dht22-hum">{{ $latest->humidity_dht22 ?? '—' }}%
-                        </div>
+                        <div class="sensor-reading-value hum" id="dht22-hum">{{ $latest->humidity_dht22 ?? '—' }}%</div>
                     </div>
                 </div>
                 <div class="sensor-limit">
                     <i class="bi bi-arrow-down-circle" style="color:var(--hum)"></i>
-                    Min <strong
-                        style="color:var(--text);margin-left:4px">{{ optional($cage->setting)->min_humidity ?? '—' }}
-                        %</strong>
+                    Min <strong style="color:var(--text);margin-left:4px">{{ optional($cage->setting)->min_humidity ?? '—' }} %</strong>
                 </div>
             </div>
 
@@ -1597,9 +1302,9 @@
             @foreach ($actuators as $actuator)
                 @php
                     $icons = ['lampu' => 'bi-lightbulb-fill', 'mistmaker' => 'bi-cloud-fog2-fill'];
-                    $icon = $icons[strtolower($actuator->name)] ?? 'bi-cpu-fill';
-                    $isOn = $actuator->state === 'ON';
-                    $isAuto = $actuator->mode === 'AUTO';
+                    $icon  = $icons[strtolower($actuator->name)] ?? 'bi-cpu-fill';
+                    $isOn  = $actuator->state === 'ON';
+                    $isAuto= $actuator->mode  === 'AUTO';
                 @endphp
 
                 <div class="actuator-card {{ $isOn ? 'active' : '' }}" id="act-card-{{ $actuator->id }}">
@@ -1613,8 +1318,7 @@
                     <div class="actuator-name">{{ ucfirst($actuator->name) }}</div>
                     <div class="toggle-wrap">
                         <div class="toggle-switch {{ $isOn ? 'on' : '' }}" id="toggle-{{ $actuator->id }}"
-                            onclick="toggleActuator({{ $actuator->id }})">
-                        </div>
+                            onclick="toggleActuator({{ $actuator->id }})"></div>
                         <span class="toggle-status {{ $isOn ? 'on' : 'off' }}" id="status-{{ $actuator->id }}">
                             {{ $actuator->state }}
                         </span>
@@ -1628,29 +1332,33 @@
         <div class="section-label">Riwayat Sensor</div>
         <div class="chart-section">
             <div class="chart-header">
-                <input type="date" id="filter-date" class="date-input">
+
+                {{-- ★ CONTROLS: filter tanggal + tombol export Excel --}}
+                <div class="chart-controls">
+                    <input type="date" id="filter-date" class="date-input">
+                    <a id="export-btn"
+                       href="{{ route('riwayat.export') }}"
+                       class="export-excel-btn"
+                       title="Export ke Excel">
+                        <i class="bi bi-file-earmark-excel-fill"></i>
+                        <span class="export-label">Export</span>
+                    </a>
+                </div>
+
                 <div>
-                    <div class="chart-title">Grafik Suhu &amp; Kelembapan
-
-                    </div>
-
-                    <!-- Klik chip untuk show/hide dataset -->
+                    <div class="chart-title">Grafik Suhu &amp; Kelembapan</div>
                     <div class="legend-chips">
                         <div class="legend-chip active" data-idx="0">
-                            <span class="bi bi-thermometer-half"></span>
-                            DHT11
+                            <span class="bi bi-thermometer-half"></span> DHT11
                         </div>
                         <div class="legend-chip active" data-idx="1">
-                            <span class="bi bi-thermometer-half"></span>
-                            DHT22
+                            <span class="bi bi-thermometer-half"></span> DHT22
                         </div>
                         <div class="legend-chip active" data-idx="2">
-                            <span class="bi bi-droplet-half"></span>
-                            DHT11
+                            <span class="bi bi-droplet-half"></span> DHT11
                         </div>
                         <div class="legend-chip active" data-idx="3">
-                            <span class="bi bi-droplet-half"></span>
-                            DHT22
+                            <span class="bi bi-droplet-half"></span> DHT22
                         </div>
                     </div>
                 </div>
@@ -1672,8 +1380,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"><i class="bi bi-thermometer-half me-2"
-                                style="color:var(--temp)"></i>Setting Batas Suhu</h5>
+                        <h5 class="modal-title"><i class="bi bi-thermometer-half me-2" style="color:var(--temp)"></i>Setting Batas Suhu</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
@@ -1697,16 +1404,14 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"><i class="bi bi-droplet-half me-2"
-                                style="color:var(--hum)"></i>Setting Batas Kelembapan</h5>
+                        <h5 class="modal-title"><i class="bi bi-droplet-half me-2" style="color:var(--hum)"></i>Setting Batas Kelembapan</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
                         <label>Batas Kelembapan Minimum (%)</label>
                         <input type="number" name="min_humidity" class="form-control" step="0.1"
                             value="{{ optional($cage->setting)->min_humidity }}" required>
-                        <small class="text-muted">Mistmaker akan otomatis menyala jika kelembapan di bawah batas
-                            ini</small>
+                        <small class="text-muted">Mistmaker akan otomatis menyala jika kelembapan di bawah batas ini</small>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
@@ -1723,15 +1428,13 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"><i class="bi bi-calendar3 me-2"
-                                style="color:var(--amber)"></i>Tanggal Mulai Kandang</h5>
+                        <h5 class="modal-title"><i class="bi bi-calendar3 me-2" style="color:var(--amber)"></i>Tanggal Mulai Kandang</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">
                         <label>Tanggal Pembuatan Kandang</label>
                         <input type="datetime-local" class="form-control" name="start_date"
-                            value="{{ $cage ? \Carbon\Carbon::parse($cage->start_date)->format('Y-m-d\TH:i') : '' }}"
-                            required>
+                            value="{{ $cage ? \Carbon\Carbon::parse($cage->start_date)->format('Y-m-d\TH:i') : '' }}" required>
                         <small class="text-muted">Pilih tanggal dan jam saat inkubasi dimulai</small>
                     </div>
                     <div class="modal-footer">
@@ -1749,8 +1452,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"><i class="bi bi-egg-fill me-2" style="color:var(--amber)"></i>Jumlah
-                            Telur</h5>
+                        <h5 class="modal-title"><i class="bi bi-egg-fill me-2" style="color:var(--amber)"></i>Jumlah Telur</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
                     <div class="modal-body">

@@ -15,6 +15,8 @@ use App\Models\LatestReading;
 use App\Models\Setting;
 use App\Services\MqttService;
 use Laravel\Reverb\Loggers\Log;
+use App\Exports\SuhuKelembapanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardController extends Controller
 {
@@ -196,4 +198,40 @@ class DashboardController extends Controller
 
         return response()->json($data);
     }
+public function export(Request $request)
+{
+    $date  = $request->date;
+    $query = \App\Models\SensorReading::orderBy('created_at', 'asc');
+    if ($date) $query->whereDate('created_at', $date);
+    $rows = $query->get();
+
+    $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+    $sheet       = $spreadsheet->getActiveSheet();
+
+    // Header
+    $sheet->fromArray([
+        'No', 'Tanggal & Waktu', 'Tipe Sensor', 'Suhu (°C)', 'Kelembapan (%)'
+    ], null, 'A1');
+
+    // Data
+    foreach ($rows as $i => $row) {
+        $sheet->fromArray([
+            $i + 1,
+            $row->created_at->format('d/m/Y H:i:s'),
+            strtoupper($row->type),
+            $row->temperature,
+            $row->humidity,
+        ], null, 'A' . ($i + 2));
+    }
+
+    $fileName = 'riwayat-suhu-kelembapan' . ($date ? "_$date" : '') . '.xlsx';
+
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment; filename="' . $fileName . '"');
+    header('Cache-Control: max-age=0');
+
+    $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+    $writer->save('php://output');
+    exit;
+}
 }

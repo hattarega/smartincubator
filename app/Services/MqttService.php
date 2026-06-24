@@ -17,7 +17,7 @@ class MqttService
     {
         $server = env('MQTT_HOST');
         $port = env('MQTT_PORT', 8883);
-        $clientId = 'laravel-subscriber';
+        $clientId = 'laravel-subscriber2';
 
         $mqtt = new MqttClient($server, $port, $clientId);
 

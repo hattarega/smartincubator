@@ -44,4 +44,5 @@ Route::middleware(['auth', 'nocache'])->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/riwayat/export', [DashboardController::class, 'export'])->name('riwayat.export');
 });
