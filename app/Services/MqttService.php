@@ -118,10 +118,41 @@ class MqttService
                 return;
             }
 
-            // Loop tiap aktuator yang ada di payload (lampu, mistmaker, dst)
+            // ---- Deteksi bentuk payload ----
+            // Bentuk SINGLE/EVENT: {"name":"lampu","state":"OFF"}  -> tidak ada "mode"
+            // Bentuk FULL/PERIODIC: {"lampu":{"state":..,"mode":..}, "mistmaker":{...}}
+            if (isset($data['name'], $data['state']) && !isset($data['mode'])) {
+                $payload = [
+                    $data['name'] => [
+                        'state' => $data['state'],
+                        // mode tidak dikirim di bentuk ini -> jangan disentuh
+                    ],
+                ];
+                updateActuatorsFromPayload($payload, $cageId, includeMode: false);
+                return;
+            }
+
+            // ---- Bentuk FULL/PERIODIC (per-aktuator lengkap) ----
+            updateActuatorsFromPayload($data, $cageId, includeMode: true);
+        });
+
+        /**
+         * Helper: update satu atau beberapa actuator dari payload MQTT.
+         *
+         * @param array $data         ['lampu' => ['state' => 'ON', 'mode' => 'AUTO'], ...]
+         * @param int   $cageId
+         * @param bool  $includeMode  false jika payload tidak membawa field mode
+         */
+        function updateActuatorsFromPayload(array $data, int $cageId, bool $includeMode): void
+        {
             foreach ($data as $name => $info) {
-                if (!isset($info['state'], $info['mode'])) {
-                    Log::warning('MQTT ACTUATOR: field state/mode tidak lengkap', ['name' => $name]);
+                if (!is_array($info) || !isset($info['state'])) {
+                    Log::warning('MQTT ACTUATOR: field state tidak lengkap', ['name' => $name, 'info' => $info]);
+                    continue;
+                }
+
+                if ($includeMode && !isset($info['mode'])) {
+                    Log::warning('MQTT ACTUATOR: field mode tidak lengkap', ['name' => $name]);
                     continue;
                 }
 
@@ -134,17 +165,24 @@ class MqttService
                     continue;
                 }
 
-                // Update state dan mode sesuai yang dikirim ESP
-                $actuator->update([
+                $updateData = [
                     'state'      => strtoupper($info['state']),
-                    'mode'       => strtoupper($info['mode']),
-                    'updated_at' => now()
-                ]);
+                    'updated_at' => now(),
+                ];
+
+                // Hanya timpa mode kalau payload memang membawanya —
+                // mencegah event single-actuator (tanpa mode) menghapus
+                // mode MANUAL/AUTO yang sedang aktif di DB.
+                if ($includeMode) {
+                    $updateData['mode'] = strtoupper($info['mode']);
+                }
+
+                $actuator->update($updateData);
 
                 Log::info('MQTT ACTUATOR UPDATED', [
                     'name'  => $name,
                     'state' => $info['state'],
-                    'mode'  => $info['mode'],
+                    'mode'  => $includeMode ? $info['mode'] : '(unchanged)',
                 ]);
 
                 try {
@@ -153,7 +191,7 @@ class MqttService
                     Log::error('EVENT ERROR: ' . $e->getMessage());
                 }
             }
-        }, 0);
+        }
 
         $mqtt->loop(true);
     }
